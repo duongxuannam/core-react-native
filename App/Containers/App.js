@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import ReduxNavigation from '../Navigation/ReduxNavigation'
+import { Provider } from 'react-redux'
+import RootContainer from './RootContainer'
+import createStore from '../Redux'
+
+const store = createStore()
+
 
 export default class App extends Component {
   render() {
     return (
-      <ReduxNavigation />
+      <Provider store={store}>
+      <RootContainer />
+    </Provider>
+
 
     );
   }

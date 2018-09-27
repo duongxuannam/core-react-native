@@ -1,9 +1,24 @@
 import React, {PureComponent} from 'react';
-import {  Text, View} from 'react-native';
+import {  Text, View, Image} from 'react-native';
+import { connect } from 'react-redux'
+import { Images } from '../../Themes'
 
 
-export default class App extends PureComponent {
+ class Community extends PureComponent {
+
+    static navigationOptions = ({ navigation }) => {
+        return {
+          tabBarIcon: ({ tintColor }) => (
+            <Image
+              resizeMode='contain'
+              source={Images.community}
+              style={ {height:26,width:26, tintColor }}
+            />
+          ),
+        }
+      }
   render() {
+    console.log('this.props ', this.props)
     return (
       <View >
         <Text >Commutnitty</Text>
@@ -12,3 +27,13 @@ export default class App extends PureComponent {
   }
 }
 
+
+const mapStateToProps = state => {
+  return {
+    app: state.app,
+  }
+}
+ 
+
+
+export default connect(mapStateToProps, null)(Community)
