@@ -1,5 +1,8 @@
+import Indicator from './Indicator'
 import TabBar from './TabBar'
+import Avatar from './Avatar'
+import SearchBar from './SearchBar'
 
-export default {
-    TabBar
+export  {
+    Indicator,SearchBar,Avatar,TabBar
 }
