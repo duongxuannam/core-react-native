@@ -1,7 +1,8 @@
 import {Dimensions, Platform} from 'react-native'
 
 const { width, height } = Dimensions.get('window')
-const scale = width/ 375
+
+const scale = width/ 320
 export const normalize = (size) => {
   return Math.round(scale * size)
 }

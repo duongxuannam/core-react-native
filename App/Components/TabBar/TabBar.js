@@ -24,7 +24,6 @@ class TabBar extends Component {
         <TouchableWithoutFeedback
           key={index}
           onPress={() => { 
-              console.log(':((')
               navigation.navigate(_.get(navigation, ['state', 'routes', index]))
             } 
           }

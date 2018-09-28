@@ -4,26 +4,29 @@ import I18n from 'react-native-i18n'
 import { connect } from 'react-redux'
 import FastImage from 'react-native-fast-image'
 import NavigationHeader from '../NavigationHeader'
-
+import { Metrics } from '../../Themes'
+import { normalize } from '../../Themes/Metrics'
 class Community extends PureComponent {
 
   static navigationOptions = ({ navigation }) => 
   {
     return {
+      headerStyle: {height: Metrics.screenHeight/12},
       headerTitle: <NavigationHeader/>,
       headerLeft:null,
       headerRight: null,
-  
-
     }
   }
-  
   render() {
     return (
       <View >
-        <Text >{I18n.t('hello')} </Text>
+        <Text style={{fontSize:normalize(40)}}>{I18n.t('hello')} </Text>
         <FastImage
-          style={{ height: 200, width: 200 }}
+          style={{       borderRadius: 15,
+            height: 30,
+            
+            width: 30,
+             }}
           source={{
             uri: 'https://unsplash.it/400/400?image=1',
             headers: { Authorization: 'someAuthToken' },
