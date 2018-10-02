@@ -1,12 +1,23 @@
 import React from 'react'
 import { Image } from 'react-native'
-import { createBottomTabNavigator, TabNavigator } from 'react-navigation'
+import { TabNavigator } from 'react-navigation'
 import { CommunityNavigation, NewsFeedNavigation, VideoNavigation, UserNavigation } from './RouteTab'
 
-import { TabBar } from '../Components'
+import  TabBar  from '../Containers/TabBar'
 import { Images } from '../Themes'
 
 const TabBarNavigation = TabNavigator({
+  NewsFeedNavigation: { screen: NewsFeedNavigation ,
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        return (<Image
+          resizeMode='contain'
+          source={Images.newsfeed}
+          style={{ height: 26, width: 26, tintColor }}
+        />)
+      },
+    })
+  },
   CommunityNavigation: {
     screen: CommunityNavigation,
     navigationOptions: ({ navigation }) => ({
@@ -18,13 +29,13 @@ const TabBarNavigation = TabNavigator({
         />)
       },
     })
-  },
-  NewsFeedNavigation: { screen: NewsFeedNavigation ,
+  },  
+  VideoNavigation: { screen: VideoNavigation ,
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }) => {
         return (<Image
           resizeMode='contain'
-          source={Images.newsfeed}
+          source={Images.video}
           style={{ height: 26, width: 26, tintColor }}
         />)
       },
@@ -40,19 +51,9 @@ const TabBarNavigation = TabNavigator({
         />)
       },
     })
-  },  VideoNavigation: { screen: VideoNavigation ,
-    navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => {
-        return (<Image
-          resizeMode='contain'
-          source={Images.video}
-          style={{ height: 26, width: 26, tintColor }}
-        />)
-      },
-    })
   }
 }, {
-    initialRouteName: 'CommunityNavigation',
+    initialRouteName: 'NewsFeedNavigation',
     tabBarComponent: (config) => <TabBar configTabBar={config} />,
     tabBarPosition: 'bottom',
     headerMode: 'none',

@@ -1,51 +1,38 @@
 import React, { PureComponent } from 'react';
-import { Text, View, Image } from 'react-native';
-import I18n from 'react-native-i18n'
-import { connect } from 'react-redux'
-import FastImage from 'react-native-fast-image'
 import NavigationHeader from '../NavigationHeader'
-import { Metrics } from '../../Themes'
-import { normalize } from '../../Themes/Metrics'
-class Community extends PureComponent {
+import CommunityNew from '../CommunityNew'
+import CommunityCategory from '../CommunityCategory'
 
-  static navigationOptions = ({ navigation }) => 
-  {
+import {ScrollableTabView} from '../../Components'
+import { Metrics } from '../../Themes'
+
+
+export default class Community extends PureComponent {
+
+  static navigationOptions = ({ navigation }) => {
     return {
-      headerStyle: {height: Metrics.screenHeight/12},
-      headerTitle: <NavigationHeader/>,
-      headerLeft:null,
+      headerStyle: { height: Metrics.screenHeight / 12 },
+      headerTitle: <NavigationHeader />,
+      headerLeft: null,
       headerRight: null,
     }
   }
   render() {
     return (
-      <View >
-        <Text style={{fontSize:normalize(40)}}>{I18n.t('hello')} </Text>
-        <FastImage
-          style={{       borderRadius: 15,
-            height: 30,
-            
-            width: 30,
-             }}
-          source={{
-            uri: 'https://unsplash.it/400/400?image=1',
-            headers: { Authorization: 'someAuthToken' },
-            priority: FastImage.priority.normal,
-          }}
-          resizeMode={FastImage.resizeMode.contain}
-        />
-      </View>
-    );
-  }
-}
+      <ScrollableTabView >
+      <CommunityNew tabLabel="Mới nhất" />
+      <CommunityCategory tabLabel="Làm đẹp" />
+      <CommunityCategory tabLabel="Giải trí" />
+      <CommunityCategory tabLabel="Công nghệ" />
+      <CommunityCategory tabLabel="Công nghệ" />
+      <CommunityCategory tabLabel="Công nghệ" />
 
-
-const mapStateToProps = state => {
-  return {
-    app: state,
+    </ScrollableTabView>
+    )
   }
 }
 
 
 
-export default connect(mapStateToProps, null)(Community)
+
+

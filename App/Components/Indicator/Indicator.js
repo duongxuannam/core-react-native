@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import PropTypes from 'prop-types'
 import { Metrics } from '../../Themes'
 
-class Indicator extends Component {
+class Indicator extends PureComponent {
   static propTypes = {
     isShowingIndicator: PropTypes.bool,
     backgroundColor: PropTypes.string,

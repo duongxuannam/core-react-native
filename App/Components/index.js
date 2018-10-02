@@ -1,8 +1,8 @@
 import Indicator from './Indicator'
-import TabBar from './TabBar'
 import Avatar from './Avatar'
 import SearchBar from './SearchBar'
+import ScrollableTabView from './ScrollableTabView'
 
-export  {
-    Indicator,SearchBar,Avatar,TabBar
+export {
+    Indicator, SearchBar, Avatar, ScrollableTabView
 }

@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { TouchableWithoutFeedback, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import styles from './style'
 
-class TabBar extends Component {
+class TabBar extends PureComponent {
 
   static propTypes = {
     configTabBar: PropTypes.object,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { BackHandler, Platform } from 'react-native'
 import { addNavigationHelpers } from 'react-navigation'
 import { createReduxBoundAddListener } from 'react-navigation-redux-helpers'
+import { connect} from 'react-redux'
 import AppNavigation from './AppNavigation'
 
 class ReduxNavigation extends React.Component {
@@ -16,7 +17,8 @@ class ReduxNavigation extends React.Component {
     BackHandler.addEventListener('hardwareBackPress', () => {
       const { dispatch, nav } = this.props
       // change to whatever is your first screen, otherwise unpredictable results may occur
-      if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
+      if (nav.routes.length === 1 && nav.routes[0].index === 0 &&
+        nav.routes[0].routes[0].routes.length === 1 && nav.routes[0].routes[0].index === 0) {
         return false
       }
       // if (shouldCloseApp(nav)) return false
@@ -36,8 +38,10 @@ class ReduxNavigation extends React.Component {
 
   }
 }
-
+const mapStateToProps = state => ({
+  nav: state.nav
+})
 // const mapStateToProps = state => ({ nav: state.nav })
 // export default connect(mapStateToProps)(ReduxNavigation)
 
-export default ReduxNavigation
+export default connect(mapStateToProps, null)(ReduxNavigation)
